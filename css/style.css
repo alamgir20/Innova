@@ -10,7 +10,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f4f7f6;
+  background: #000;
 }
 html {
   scroll-behavior: smooth;
@@ -42,8 +42,10 @@ p {
   font-weight: 600;
   font-family: Satoshi Regular;
 }
-
-.content_box a {
+.container{
+  max-width: 1440px;
+}
+.btn_box a {
     border-radius: 32px;
     background: #F36623;
     padding: 16px 24px 16px 24px;
@@ -61,7 +63,7 @@ p {
     z-index: 9;
 }
 
-.content_box a:before {
+.btn_box a:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -83,28 +85,23 @@ p {
   transition-timing-function: ease-out;
   border-radius: 32px;
 }
-.content_box a:hover,
-.content_box a:focus,
-.content_box a:active {
+.btn_box a:hover,
+.btn_box a:focus,
+.btn_box a:active {
   color: #fff !important;
 }
-.content_box a:hover:before,
-.content_box a:focus:before,
-.content_box a:active:before {
+.btn_box a:hover:before,
+.btn_box a:focus:before,
+.btn_box a:active:before {
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
   -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
   transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
 }
 
-.content_box a {
+.btn_box a {
   color: #fff;
   text-decoration: none;
-}
-.content_box a img{
-  width: 13px;
-  height: 13px;
-  margin-left: 5px;
 }
 .section_padding {
   padding: 80px 0px;
@@ -119,52 +116,185 @@ p {
   width: 152px;
   margin-top: 10px;
 }
+.navbar-expand-lg .navbar-collapse {
+    justify-content: end;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 24px;
+    padding-left: 24px;
+    color: #f4f7f6;
+    font-size: 14px;
+}
 /*end header section*/
 /*hero area section*/
-.hero_area_section{
-    background-image: url(../image/hero-banner.svg);
+.hero_area_section {
+    background-image: url(../image/bg-hero.png);
     width: 100%;
-    height: 100vh;
-    background-size: cover;
+    /* height: 100vh; */
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
+    padding: 150px 0px;
 }
 .content_box {
     text-align: center;
     width: 80%;
     margin: 0 auto;
+    margin-top: 64px;
 }
 .content_box h1{
-  font-size: 56px;
+  font-size: 52px;
   font-weight: 700;
   line-height: 67px;
   position: relative;
   text-transform: uppercase;
 }
-.content_box h1:before {
-    content: '';
-    position: absolute;
-    left: 56%;
-    top: 64%;
-    bottom: 0;
-    right: 0;
-    width: 469px;
-    height: 2px;
-    background: #e0e0e0;
-    transform: translate(-50%,-50%);
-}
 .content_box h1 span{
   color: #F36623;
 }
-.content_box p{
-  color: #e0e0e0;
-  font-size: 16px;
-  line-height: 24px;
-  text-transform: capitalize;
+.content_box p {
+    color: #F7F8FF;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: capitalize;
+    font-weight: 400;
+    width: 68%;
+    margin: 0 auto;
+    margin-bottom: 47px;
+}
+.player {
+    border: 15px solid rgb(210 210 210 / 16%);
+    position: relative;
+    font-size: 0;
+    overflow: hidden;
+    margin: auto;
+    border-radius: 27px;
+}
+.player__video {
+    width: 100%;
+    border-radius: 13px;
+}
+.player__button {
+  background:none;
+  border:0;
+  line-height:1;
+  color:#ffc80a;
+  text-align: center;
+  outline:0;
+  padding: 0;
+  cursor:pointer;
+  max-width:50px;
+  width: 100%;
+}
+.play-icon{
+  font-size: 80px;
+  color: #ffc80a;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: 0.6s;
+}
+
+/*end hero area*/
+/*Insights*/
+.insights_section {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.insights_section:before {
+    background-image: url(../image/box.svg);
+    width: 100%;
+    background-repeat: no-repeat;
+    content: '';
+    position: absolute;
+    top: -9%;
+    height: 100%;
+    overflow: hidden;
+    left: 58%;
+}
+#experienceTab.nav-pills .nav-link.active {
+    color: #EFF0FE;
+    background-color: transparent;
+    border-radius: 0px;
+    border-left: 5px solid  #F36623;
+}
+#experienceTab.nav-pills .nav-link {
+    border-radius: 0px;
+    border-left: 5px solid #D9D9D9;
+    height: 100px;
+}
+.date-range {
+    letter-spacing: 0.01em;
+    color: #8892B0;
+}
+.nav-item a {
+    color: rgb(239 240 254 / 48%);
+    font-size: 16px;
+    line-height: 25px;
+}
+
+.tab-pane .player_box {
+    border: 15px solid rgb(210 210 210 / 16%);
+    position: relative;
+    font-size: 0;
+    overflow: hidden;
+    margin: auto;
+    border-radius: 20px;
+    width: 100%;
+}
+.tab-pane .player__video {
+    width: 100%;
+    border-radius: 10px;
+}
+.section_title{
+  margin-bottom: 50px;
+}
+.section_title h2 span{
+  font-size: 14px;
+  color: #F36623;
+  margin-left: 10px;
   font-weight: 400;
 }
-.content_box p b{
-  color: #fff;
-  font-family: Satoshi-Bold;
+.section_title p{
+  width: 350px;
+  font-size: 22px;
+  font-weight: 400;
+  color: #EFF0FE;
+}
+/*end Insights*/
+/*contact with us*/
+.contact_box h2{
+ color:#EFF0FE;
+font-size: 48px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%;
+text-transform: uppercase;
+margin-bottom: 20px;
+}
+.btn_cont {
+    color: #F36623;
+    text-align: center;
+    font-size: 86px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border-radius: 43.306px;
+    border: 4px solid rgba(239, 240, 254, 0.45);
+    background: rgba(239, 240, 254, 0.16);
+    width: 1107px;
+    height: 189.462px;
+    padding: 22px 0px;
+}
+.btn_cont a{
+  color: #F36623;
+  text-align: center;
+  font-size: 86px;
+  font-style: normal;
   font-weight: 700;
+  line-height: normal;
 }
