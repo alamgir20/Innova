@@ -15,14 +15,16 @@
       <!-- header section -->
       <header class="header_section">
          <div class="container">
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar  navbar-expand-lg navbar-light">
                <a class="navbar-brand" href="index.html">
                <img src="image/logo.svg">
                </a>
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
+             <button type="button" class="navbar-toggle x collapsed" data-toggle="collapse" data-target="#navbar-collapse-x">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
                </button>
-               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <div class="collapse navbar-collapse" id="navbar-collapse-x">
                   <ul class="navbar-nav">
                      <li class="nav-item">
                         <a class="nav-link" href="#tech">Innova Sequent</a>
@@ -131,6 +133,49 @@
       
       
    </div><!--  swiper-container  -->
+
+   <div class="mb_ver_res">
+      <div class="container">
+         <div class="section_title">
+         <h2><img src="image/monitoring.svg"><span>Insights</span></h2>
+         <p>Data to Decisions: Organize, Analyze, Predict. SEQUENT.</p>
+      </div>
+         <div class="w3-bar w3-black ">
+          <button class="w3-bar-item w3-button tablink w3-red" onclick="openCity(event,'Select')">Select and plot tags imported to SEQUENT</button>
+          <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Assign')">Assign sensitivity (Low, Medium High) to create time series clusters</button>
+          <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Create')">Create and save events. Once an event is saved, SEQUENT will look for similar events across other assets</button>
+        </div>
+         <div id="Select" class="w3-container w3-border city w3-animate-bottom">
+             <div class="tab-pane">
+               <div class="video_box">
+                  <div class="player_box ">
+                     <video muted="" autoplay="" class="player__video viewer" poster="image/prat2-poster.png" src="video/part1.mp4"></video>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div id="Assign" class="w3-container w3-border city w3-animate-bottom" style="display:none">
+             <div class="tab-pane">
+               <div class="video_box">
+                  <div class="player_box">
+                     <video muted="" autoplay="" class="player__video viewer" poster="image/prat1-poster.png" src="video/Part 2.mp4"></video>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div id="Create" class="w3-container w3-border city w3-animate-bottom" style="display:none">
+              <div class="tab-pane">
+                  <div class="video_box">
+                     <div class="player_box">
+                        <video muted="" autoplay="" class="player__video viewer" poster="image/prat3-poster.png" src="video/Part3.mp4"></video>
+                     </div>
+                  </div>
+               </div>
+         </div>
+      </div>
+      </div>
 </section>      <!-- end Insights section -->
       <!-- contact with us -->
         <section class="contact_with section_padding">
@@ -160,5 +205,20 @@
       <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.2/CSSRulePlugin.min.js'></script>
       <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.2/ScrollToPlugin.min.js'></script>
       <script src="js/main.js"></script>
+      <script>
+function openCity(evt, cityName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+</script>
    </body>
 </html>

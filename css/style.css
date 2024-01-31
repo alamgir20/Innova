@@ -28,6 +28,12 @@ a {
   display: inline-block;
   font-family: Satoshi Regular;
 }
+button{
+  outline: none;
+}
+button:focus {
+    outline: none;
+}
 a:hover {
   text-decoration: none;
 }
@@ -500,10 +506,10 @@ section.our_service.okta.section_padding {
     margin-top: 58px;
 }
 .okta_expertise {
-    padding: 46px 15px;
+    padding: 40px 15px;
     background-image: url(../image/our_expertise.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     background-position: center;
 }
 .icon_box_expertise img {
@@ -665,4 +671,7 @@ section.our_service.okta.section_padding {
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
+}
+.mb_ver_res{
+  display: none;
 }
