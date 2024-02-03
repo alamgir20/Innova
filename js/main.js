@@ -1,52 +1,48 @@
 //Menu toggle-effect
-$(document).ready(function(){
-  $(".menu-icon").on("click",function(){
-    $("nav ul").toggleClass("showing");
+$(document).ready(function () {
+  $('.menu-icon').on('click', function () {
+    $('nav ul').toggleClass('showing');
   });
 });
 
 //Scrolling Effect
-$(window).on('scroll', function(){
-  if($(window).scrollTop()) {
+$(window).on('scroll', function () {
+  if ($(window).scrollTop()) {
     $('.header_section').addClass('black');
+  } else {
+    $('.header_section').removeClass('black');
   }
-  else{
-    $('.header_section').removeClass('black')
-  }
-})
-
-
+});
 
 gsap.registerPlugin(ScrollToPlugin, CSSRulePlugin);
-
 
 // VARIABLES
 
 const headerHome = document.querySelector('.site-header-home'),
-slider = document.querySelector('.swiper-container-home'),
-sliderNav = document.querySelector('.home-slider-navigation'),
-sliderContent = document.querySelector('.home-slider__toContent'),
-sliderContentBefore = CSSRulePlugin.getRule(".home-slider__toContent:before"),
-sliderSlide = document.querySelector('.home-slider__toSlide');
+  slider = document.querySelector('.swiper-container-home'),
+  sliderNav = document.querySelector('.home-slider-navigation'),
+  sliderContent = document.querySelector('.home-slider__toContent'),
+  sliderContentBefore = CSSRulePlugin.getRule('.home-slider__toContent:before'),
+  sliderSlide = document.querySelector('.home-slider__toSlide');
 
 // SWIPER
 var mySwiperHome = new Swiper(slider, {
   // Optional parameters
-  speed: 1500,
+  speed: 2500,
   grabCursor: false,
   direction: 'vertical',
   mousewheel: true,
   keyboard: {
-    enabled: true } });
-
-
+    enabled: true,
+  },
+});
 
 // SLIDER ON slidechange
 mySwiperHome.on('slideChange', function () {
   // Animation
 
   // navigation change active class
-  sliderNav.childNodes.forEach(e => {
+  sliderNav.childNodes.forEach((e) => {
     if (e.getAttribute('data-index') === this.activeIndex.toString()) {
       e.classList.add('active');
     } else {
@@ -59,12 +55,11 @@ mySwiperHome.on('slideChange', function () {
     duration: 0.8,
     opacity: 1,
     repeat: 1,
-    yoyo: true });
+    yoyo: true,
+  });
 
   if (mySwiperHome.isEnd) {
-
     scrollAnimation.play();
-
   } else {
     gsap.set(sliderContentBefore, { opacity: 0 });
     scrollAnimation.kill();
@@ -74,40 +69,43 @@ mySwiperHome.on('slideChange', function () {
 // SLIDER ON slideEnd
 mySwiperHome.on('slideChange', function () {
   gsap.set('.swiper-slide .slider-text', { opacity: 0 });
-  gsap.set('.swiper-slide .gold', { width: "0px" });
+  gsap.set('.swiper-slide .gold', { width: '0px' });
   gsap.set('.swiper-slide .btn__wrapper', { opacity: 0 });
 });
 
 mySwiperHome.on('transitionEnd', function () {
-
   gsap.to('.slider-text-bottom', {
-    duration: .2,
-    opacity: 1 });
+    duration: 0.2,
+    opacity: 1,
+  });
 
   gsap.from('.slider-text-bottom', {
-    duration: .7,
-    ease: "power4. inOut",
-    x: -290 });
+    duration: 0.7,
+    ease: 'power4. inOut',
+    x: -290,
+  });
 
   gsap.to('.slider-text-top', {
-    duration: .2,
-    opacity: 1 });
+    duration: 0.2,
+    opacity: 1,
+  });
 
   gsap.from('.slider-text-top', {
-    duration: .7,
-    ease: "power4. inOut",
-    x: 290 });
+    duration: 0.7,
+    ease: 'power4. inOut',
+    x: 290,
+  });
 
   gsap.to('.gold', {
-    duration: .3,
-    width: "40px" });
+    duration: 0.3,
+    width: '40px',
+  });
 
   gsap.to('.slider-inner .btn__wrapper', {
-    duration: .5,
-    opacity: 1 });
-
+    duration: 0.5,
+    opacity: 1,
+  });
 });
-
 
 //Slide to index according to 'data-index'
 function slide(e) {
@@ -121,46 +119,52 @@ function slide(e) {
 // NAVIGATION EVENT
 sliderNav.addEventListener('click', slide);
 
-/* Get Our Elements */
-const player = document.querySelector('.player');
-const video = player.querySelector('.viewer');
-const toggle = player.querySelector('.toggle');
-const playIcon = document.querySelector('.play-icon');
+var lastScrollTop = 0;
+var isSwiperEnabled = true;
 
-var playing = false;
-/* Build out functions */
-function togglePlay() {
-  const method = video.paused ? 'play' : 'pause';
-  video[method]();
-  if(playing == false){
-    $('.play-icon').css('opacity', '0');
-    playing = true;
-  } else{
-    $('.play-icon').text('❚ ❚');
-    $('.play-icon').css('opacity', '1');
-    playing = false;
+// mySwiperHome.on('progress', function (progress) {
+//   if (progress <= 0.1 || progress >= 0.9) {
+//     isSwiperEnabled = false;
+//     mySwiperHome.mousewheel.disable();
+//     mySwiperHome.keyboard.disable();
+//   }
+// });
+
+mySwiperHome.on('reachEnd', function (progress) {
+  isSwiperEnabled = false;
+  mySwiperHome.mousewheel.disable();
+  mySwiperHome.keyboard.disable();
+});
+
+mySwiperHome.on('reachBeginning', function (progress) {
+  isSwiperEnabled = false;
+  mySwiperHome.mousewheel.disable();
+  mySwiperHome.keyboard.disable();
+});
+
+// Function to handle the scroll event
+function handleScroll() {
+  var currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+
+  var isUpward = lastScrollTop > currentScrollTop;
+  var isDownward = lastScrollTop < currentScrollTop;
+
+  if (isDownward && mySwiperHome.isBeginning) {
+    mySwiperHome.mousewheel.enable();
+    mySwiperHome.keyboard.enable();
+    isSwiperEnabled = true;
+  } else if (isUpward && mySwiperHome.isBeginning) {
+    mySwiperHome.mousewheel.disable();
+    mySwiperHome.keyboard.disable();
+    isSwiperEnabled = false;
+  } else if (isUpward && !isSwiperEnabled) {
+    mySwiperHome.mousewheel.enable();
+    mySwiperHome.keyboard.enable();
+    isSwiperEnabled = true;
   }
-  console.log(playing);
+
+  lastScrollTop = currentScrollTop;
 }
 
-function updateButton() {
-  const icon = this.paused ? '►' : '❚ ❚';
-  console.log(icon);
-  toggle.textContent = icon;
-}
-
-
-/* Hook up he event listners */
-video.addEventListener('click', togglePlay);
-playIcon.addEventListener('click', togglePlay);
-video.addEventListener('play', updateButton);
-toggle.addEventListener('click', togglePlay);
-
-let mousedown = false;
-progress.addEventListener('click', scrub);
-
-
-
-
-
-// video tow
+// Add a scroll event listener
+window.addEventListener('scroll', handleScroll);

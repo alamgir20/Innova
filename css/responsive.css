@@ -41,6 +41,19 @@
   .contact_inner_rx {
     width: 472px;
   }
+  .our_service .content_inner p {
+    font-size: 15px;
+}
+.content_service {
+    height: 390px;
+}
+.icon_box_service {
+    right: 32px;
+    bottom: 32px;
+}
+.icon_box_service img {
+    width: 140px;
+}
 }
 @media (max-width: 1400px) {
   .hero_area_section {
@@ -114,6 +127,7 @@
     height: 600px;
     top: 150px;
   }
+
 }
 @media (max-width: 991px) {
   .content_box {
@@ -288,6 +302,17 @@
     height: 734px;
     top: 63px;
   }
+    .get-quote {
+    margin-bottom: 20px;
+    margin-top: 18px;
+}
+.hero_area_section {
+    background-image: url(../image/Mobile-version.svg);
+    padding-bottom: 42px;
+}
+.contact_form .col-lg-6.align-items-center {
+    padding-right: 15px;
+}
 }
 @media (max-width: 767px) {
   .content_box {
@@ -313,7 +338,9 @@
     z-index: 9;
     position: relative;
   }
-
+.footer_content p {
+    width: 100%;
+}
   .w3-bar .w3-bar-item {
     padding: 8px 6px;
     float: left;
