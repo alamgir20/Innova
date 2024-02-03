@@ -149,15 +149,7 @@ function handleScroll() {
   var isUpward = lastScrollTop > currentScrollTop;
   var isDownward = lastScrollTop < currentScrollTop;
 
-  if (isDownward && mySwiperHome.isBeginning) {
-    mySwiperHome.mousewheel.enable();
-    mySwiperHome.keyboard.enable();
-    isSwiperEnabled = true;
-  } else if (isUpward && mySwiperHome.isBeginning) {
-    mySwiperHome.mousewheel.disable();
-    mySwiperHome.keyboard.disable();
-    isSwiperEnabled = false;
-  } else if (isUpward && !isSwiperEnabled) {
+  if ((isDownward && mySwiperHome.isBeginning) || (isUpward && mySwiperHome.isEnd)) {
     mySwiperHome.mousewheel.enable();
     mySwiperHome.keyboard.enable();
     isSwiperEnabled = true;
