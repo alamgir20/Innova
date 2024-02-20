@@ -68,6 +68,18 @@
   .home-slider-navigation {
     left: 136px;
   }
+  .player {
+    width: 750px;
+}
+.data_hero .content_box {
+    width: 80%;
+}
+.content_box h1 {
+    font-size: 36px;
+    line-height: 46px;
+    width: 73%;
+    margin: 0 auto;
+}
 }
 @media (max-width: 1300px) {
   .home-slider-navigation {
@@ -270,7 +282,6 @@
   }
   .header_section {
     background: #111010;
-    border-bottom: 1px solid #f36623;
   }
   .navbar-nav .nav-link {
     line-height: 28px;

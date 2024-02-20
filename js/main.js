@@ -28,7 +28,7 @@ const headerHome = document.querySelector('.site-header-home'),
 // SWIPER
 var mySwiperHome = new Swiper(slider, {
   // Optional parameters
-  speed: 2500,
+  speed: 2000,
   grabCursor: false,
   direction: 'vertical',
   mousewheel: true,
@@ -73,7 +73,8 @@ mySwiperHome.on('slideChange', function () {
   gsap.set('.swiper-slide .btn__wrapper', { opacity: 0 });
 });
 
-mySwiperHome.on('transitionEnd', function () {
+mySwiperHome.on('transitionEnd', function (a, b) {
+  console.log(a, b);
   gsap.to('.slider-text-bottom', {
     duration: 0.2,
     opacity: 1,
@@ -122,29 +123,27 @@ sliderNav.addEventListener('click', slide);
 var lastScrollTop = 0;
 var isSwiperEnabled = true;
 
-// mySwiperHome.on('progress', function (progress) {
-//   if (progress <= 0.1 || progress >= 0.9) {
-//     isSwiperEnabled = false;
-//     mySwiperHome.mousewheel.disable();
-//     mySwiperHome.keyboard.disable();
-//   }
-// });
-
 mySwiperHome.on('reachEnd', function (progress) {
-  isSwiperEnabled = false;
-  mySwiperHome.mousewheel.disable();
-  mySwiperHome.keyboard.disable();
+  setTimeout(function () {
+    isSwiperEnabled = false;
+    mySwiperHome.mousewheel.disable();
+    mySwiperHome.keyboard.disable();
+  }, 2500);
 });
 
 mySwiperHome.on('reachBeginning', function (progress) {
-  isSwiperEnabled = false;
-  mySwiperHome.mousewheel.disable();
-  mySwiperHome.keyboard.disable();
+  setTimeout(function () {
+    isSwiperEnabled = false;
+    mySwiperHome.mousewheel.disable();
+    mySwiperHome.keyboard.disable();
+  }, 2500);
 });
 
 // Function to handle the scroll event
 function handleScroll() {
   var currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+
+  console.log(slider.clientTop);
 
   var isUpward = lastScrollTop > currentScrollTop;
   var isDownward = lastScrollTop < currentScrollTop;
@@ -160,3 +159,11 @@ function handleScroll() {
 
 // Add a scroll event listener
 window.addEventListener('scroll', handleScroll);
+
+
+
+
+
+
+
+
